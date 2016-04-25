@@ -1,0 +1,44 @@
+{
+  "name": "printscreen",
+  "version": "1.0.0",
+  "description": "Generate a printscreen / screenshot of any website directly from your node app",
+  "main": "./lib/index.js",
+  "scripts": {
+    "lint": "eslint lib/",
+    "test": "./node_modules/.bin/tape test/*.js | ./node_modules/.bin/faucet",
+    "tape": "./node_modules/.bin/tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rubenstolk/printscreen.js.git"
+  },
+  "keywords": [
+    "printscreen",
+    "screenshot",
+    "webshot",
+    "shot",
+    "screen",
+    "grab",
+    "capture",
+    "image",
+    "node",
+    "javascript",
+    "npm"
+  ],
+  "author": "Ruben Stolk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubenstolk/printscreen.js/issues"
+  },
+  "homepage": "https://github.com/rubenstolk/printscreen.js#readme",
+  "dependencies": {
+    "node-phantom-simple": "^2.2.4",
+    "phantomjs-prebuilt": "^2.1.7"
+  },
+  "devDependencies": {
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb": "^8.0.0",
+    "faucet": "^0.0.1",
+    "tape": "^4.5.1"
+  }
+}
