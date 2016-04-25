@@ -1,6 +1,6 @@
 # printscreen.js
 
-Generate a printscreen / screenshot of any website directly from your node app.
+Easier website screenshots in Node.js
 
 ## Features
 
@@ -42,7 +42,7 @@ printscreen('http://google.com', {
   quality: 75,
 
   /*
-   * Optional: Defina a capture function which is injected into the webview before the printscreen is made
+   * Optional: Define a capture function which is injected into the webview before the printscreen is made
    * The returned output is available in the callback (see below)
    */
   capture: function () {
