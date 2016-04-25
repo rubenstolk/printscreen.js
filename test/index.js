@@ -4,7 +4,7 @@ const test = require('tape');
 const printscreen = require('../lib');
 
 test('Should grab from Google', test => {
-  test.plan(2);
+  test.plan(3);
 
   printscreen('http://google.com', {
 
@@ -26,8 +26,23 @@ test('Should grab from Google', test => {
   }, (err, data) => {
 
     test.ok(data.output.divs > 10, 'Google.com has at least 10 divs');
+    test.equals(data.dimensions.width, 1650, 'Width property matches');
     require('fs').stat(data.file, (err, stats) =>
-      test.ok(stats.size > 1000, 'Screenshot has at least 1000 bytes'));
+      test.ok(stats.size > 50000, 'Screenshot is at least 50000 bytes'));
+
+  });
+});
+
+test('Low quality', test => {
+  test.plan(1);
+
+  printscreen('http://google.com', {
+    timeout: 1000,
+    format: 'jpeg',
+    quality: 0
+  }, (err, data) => {
+    require('fs').stat(data.file, (err, stats) =>
+      test.ok(stats.size < 20000, 'Screenshot is maximum 20000 bytes'));
 
   });
 });

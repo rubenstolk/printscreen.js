@@ -1,6 +1,6 @@
 {
   "name": "printscreen",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generate a printscreen / screenshot of any website directly from your node app",
   "main": "./lib/index.js",
   "scripts": {

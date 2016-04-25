@@ -32,6 +32,16 @@ printscreen('http://google.com', {
   timeout: 1000,
 
   /*
+   * Optional: Define the format of the printscreen taken (pdf|png|jpeg)
+   */
+  format: 'png',
+
+  /*
+   * Optional: Define the quality of the printscreen taken (0-100)
+   */
+  quality: 75,
+
+  /*
    * Optional: Defina a capture function which is injected into the webview before the printscreen is made
    * The returned output is available in the callback (see below)
    */
