@@ -1,6 +1,7 @@
 'use strict';
 
 const test = require('tape');
+const fs = require('fs');
 const printscreen = require('../lib');
 
 test('Should grab from Google', test => {
@@ -8,9 +9,11 @@ test('Should grab from Google', test => {
 
   printscreen('http://google.com', {
 
-    viewport: {
-      width: 1650,
-      height: 1060
+    page: {
+      viewportSize: {
+        width: 1650,
+        height: 1060
+      }
     },
 
     timeout: 1000,
@@ -27,8 +30,8 @@ test('Should grab from Google', test => {
 
     test.ok(data.output.divs > 10, 'Google.com has at least 10 divs');
     test.equals(data.dimensions.width, 1650, 'Width property matches');
-    require('fs').stat(data.file, (err, stats) =>
-      test.ok(stats.size > 50000, 'Screenshot is at least 50000 bytes'));
+    fs.stat(data.file, (err, stats) =>
+      test.ok(stats && stats.size > 50000, 'Screenshot is at least 50000 bytes'));
 
   });
 });
@@ -41,8 +44,8 @@ test('Low quality', test => {
     format: 'jpeg',
     quality: 0
   }, (err, data) => {
-    require('fs').stat(data.file, (err, stats) =>
-      test.ok(stats.size < 20000, 'Screenshot is maximum 20000 bytes'));
+    fs.stat(data.file, (err, stats) =>
+      test.ok(stats && stats.size < 20000, 'Screenshot is maximum 20000 bytes'));
 
   });
 });
